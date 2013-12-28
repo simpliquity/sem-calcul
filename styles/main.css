@@ -1,0 +1,42 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    vertical-align: middle;
+}
+
+.finger {
+    r: 20px;
+    fill: red;
+    fill-opacity:20%;
+    stroke: #ff0000;
+    stroke-opacity: 80%;
+    stroke-width: 5;
+    z-index:1000;
+}
+
+#mainPage {
+    position: absolute;
+    top:0px;
+    left:0px;
+}
+
+#debug {
+    position:absolute;
+    top:0px;
+    left:0px;
+}
+
+#calculBox {
+    position:relative;
+    top:0px;
+    left:0px;
+}
+
+.fingersCount {
+    fill:#00aa00;
+    stroke:none;
+    font-family:'Handlee';
+    text-anchor:middle;
+    alignment-baseline:middle;
+    z-index:0;
+}
