@@ -40,3 +40,15 @@ body {
     alignment-baseline:middle;
     z-index:0;
 }
+
+.equation {
+    font-family: 'Handlee';
+    text-anchor: middle;
+    alignment-baseline: middle;
+}
+
+.singleNumber {
+    font-family: 'Handlee';
+    text-anchor: middle;
+    alignment-baseline: middle;
+}
