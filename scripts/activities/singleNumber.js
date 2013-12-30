@@ -1,7 +1,3 @@
-var sayNumber = function(n) {
-    $('audio.number'+n).trigger('play');
-};
-
 calcul.singleNumber = function(context) {
     var group = context.svg.append('svg:g').attr('class','singleNumber');
     var max = 10;
@@ -38,7 +34,7 @@ calcul.singleNumber = function(context) {
         next: function() {
             number = random(max);
             render();
-            sayNumber(number);
+            calcul.sayNumber(number);
         },
         setCount: function(count) {
             render();
@@ -85,9 +81,7 @@ calcul.singleNumber = function(context) {
             fingers.freeze();
             var count = fingers.count();
             var done = number.check(count);
-            if (done) {
-                $('audio.number'+count).trigger('play');
-            }
+            calcul.sayNumber(count);
             window.setTimeout(function() {
                 number.resetCheck();
                 if (done) { number.next(); }

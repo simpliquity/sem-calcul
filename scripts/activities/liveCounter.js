@@ -1,7 +1,3 @@
-var sayNumber = function(n) {
-    $('audio.number'+n).trigger('play');
-};
-
 // Affiche le nombre de doigts au centre de l'écran
 calcul.liveCounter = function(context) {
     var fingersCount = 0;
@@ -34,7 +30,7 @@ calcul.liveCounter = function(context) {
         setFingersCount: function(count) {
             fingersCount = count;
             render();
-            sayNumber(count);
+            calcul.sayNumber(count);
         } 
     };
 };
@@ -59,11 +55,10 @@ calcul.liveCounter = function(context) {
         fingers.onUpdate(function() {
             // on stoppe le timeout - on va recommencer
             clearTimeout(timeoutHandler);
-            // on attend un peu avant de déclencher une action
-            // (afficher le nombre de doigts,
-            // ou contrôler le résultat par exemple)
+            // on attend un peu avant de d'afficher le nomber
+            // permet d'éviter des glitchs (plusieurs inputs très rapides)
             timeoutHandler = window.setTimeout(function() {
                 countDisplay.setFingersCount(fingers.count());
-            }, 0);
+            }, 100);
         });
 })()

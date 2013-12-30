@@ -10,3 +10,7 @@
         }
     });
 })()
+
+calcul.sayNumber = function(n) {
+    $('audio.number'+n).trigger('play');
+};

@@ -1,6 +1,6 @@
 calcul.equation = function(context) {
     var group = context.svg.append('svg:g').attr('class','equation');
-    var max = 5;
+    var max = 10;
     var lhs = 0;
     var rhs = 0;
     var result = 0;
@@ -64,8 +64,8 @@ calcul.equation = function(context) {
             render(count);
         },
         check: function(count) {
+            render(count);
             if (count === result) {
-                render(result);
                 setTextColor('#00bb00');
                 return true;
             } else {
@@ -74,6 +74,7 @@ calcul.equation = function(context) {
             }
         },
         resetCheck: function() {
+            render();
             setTextColor(textColor);
         }
     }
@@ -97,16 +98,15 @@ calcul.equation = function(context) {
     var timeoutHandler = null;
     fingers.onUpdate(function() {
         // on affiche le résultat
-        equation.setCount(fingers.count());
+        // equation.setCount(fingers.count());
         // on stoppe le timeout - on va recommencer
         clearTimeout(timeoutHandler);
         // et on attend un peu avant de le contrôler
         timeoutHandler = window.setTimeout(function() {
             fingers.freeze();
-            var done = equation.check(fingers.count());
-            if (done) {
-                $('audio.bravo').trigger('play');
-            }
+            var count = fingers.count();
+            var done = equation.check(count);
+            calcul.sayNumber(count);
             window.setTimeout(function() {
                 equation.resetCheck();
                 if (done) { equation.next(); }
